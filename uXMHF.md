@@ -1,6 +1,7 @@
 # Build uberXMHF v6.0.0
 ## 1. Create ubuntu virtual machine on your development machine (NOT the testbed), and install Docker
 (1) Install [Ubuntu 20.04.2 x64](https://releases.ubuntu.com/20.04/ubuntu-20.04.2-desktop-amd64.iso) in a virtual machine (I used VMWare Player 16).
+
 (2) Run the following commands to install Docker
 
 ```
@@ -41,6 +42,7 @@ sudo usermod -aG docker $USER
 
 ## 2. Build Docker image of uberSpark v6.0.0
 (1) Download the [Docker File](uXMHF/Dockerfile) under the home folder ~/.
+
 (2) Build the Docker image
 
 ```
