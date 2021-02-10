@@ -2,7 +2,7 @@
 
 This summarizes my experience getting AMT serial-over-lan to work on an HP 8540p. Serial-over-lan is a big help for debugging on machines without a physical serial port, such as the 8540p. These instruction likely apply to other hardware, as well.
 
-You may also find this guide to be useful: [http://linux.die.net/man/7/amt-howto AMT Howto]
+You may also find this guide to be useful: [AMT Howto](http://linux.die.net/man/7/amt-howto)
 
 **DISCLAIMERS**
 
@@ -48,4 +48,4 @@ In my case, since I'm using a direct ethernet connection, I need to bring up the
 
 I use: ./amtterm -p 'YourAMTpassword' 192.168.0.2
 
-'''CAUTION''': your AMT password gets sent in plaintext over the network. Do not do this on an open network.
+**CAUTION**: your AMT password gets sent in plaintext over the network. Do not do this on an open network.
