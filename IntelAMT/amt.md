@@ -20,7 +20,7 @@ You may need to enable AMT in the firmware. On the 8540p, you need to go to turn
 
 Once AMT is enabled, you should see an AMT prompt during boot. Hit Ctrl-p to enter AMT configuration. The default password is 'admin'. Once you've logged in:
 
-* ''You'll be forced to change the admin password''. Again, do not lose or compromise this password! The system will enforce some password rules. See this [http://linux.die.net/man/7/amt-howto AMT Howto].
+* ''You'll be forced to change the admin password''. Again, do not lose or compromise this password! The system will enforce some password rules. See this [AMT Howto](http://linux.die.net/man/7/amt-howto).
 
 * ''Setup the network.'' It's best not to make AMT accessible from the open network, if possible. In my case, I'm using a direct ethernet connection between my two machines, so I statically configured the host machine to 192.168.0.2.
 
@@ -36,15 +36,15 @@ You can use <tt>dmesg | grep ttyS</tt> to examine the serial ports that your sys
 
 ## Getting amtterm
 
-Your best bet is to use amtterm 1.3 or higher. It is available from the author's [http://www.kraxel.org/cgit/amtterm/ git repository] or [http://www.kraxel.org/releases/amtterm/ releases directory].
+Your best bet is to use amtterm 1.3 or higher. It is available from the author's [git repository](http://www.kraxel.org/cgit/amtterm/) or [releases directory](http://www.kraxel.org/releases/amtterm/).
 
 ## Patches
 
-Most of the patches previously posted here are included in amtterm as of version 1.3. The no-truncate patch ([[Media:amtterm-no-truncate.patch.txt]]) hasn't been incorporated, but the corresponding bug should only effect you if using a user name or password greater than 63 bytes long.
+Most of the patches previously posted here are included in amtterm as of version 1.3. The [no-truncate patch](IntelAMT/amtterm-no-truncate.patch) hasn't been incorporated, but the corresponding bug should only effect you if using a user name or password greater than 63 bytes long.
 
 ## Connect from the client
 
-In my case, since I'm using a direct ethernet connection, I need to bring up the ethernet interface: <tt>sudo ifconfig eth0 192.168.0.1</tt>. You'll need to repeat this whenever the link goes down, such as if the cable is unplugged, or either NIC resets (as on reboot).
+In my case, since I'm using a direct ethernet connection, I need to bring up the ethernet interface: *sudo ifconfig eth0 192.168.0.1*. You'll need to repeat this whenever the link goes down, such as if the cable is unplugged, or either NIC resets (as on reboot).
 
 I use: ./amtterm -p 'YourAMTpassword' 192.168.0.2
 
