@@ -40,7 +40,7 @@ Your best bet is to use amtterm 1.3 or higher. It is available from the author's
 
 ## Patches
 
-Most of the patches previously posted here are included in amtterm as of version 1.3. The [no-truncate patch](IntelAMT/amtterm-no-truncate.patch) hasn't been incorporated, but the corresponding bug should only effect you if using a user name or password greater than 63 bytes long.
+Most of the patches previously posted here are included in amtterm as of version 1.3. The [no-truncate patch](amtterm-no-truncate.patch) hasn't been incorporated, but the corresponding bug should only effect you if using a user name or password greater than 63 bytes long.
 
 ## Connect from the client
 
