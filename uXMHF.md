@@ -77,7 +77,7 @@ Refer to https://docs.uberxmhf.org/pc-intel-x86_32/installing.html
 
 
 
-# Related Documents
+# Related Materials
 ## Docker commands
 (1) Run docker container: 
 ```
@@ -98,4 +98,6 @@ docker attach dev
 ```
 docker ps -a
 ```
+
+## Related documents
 1. https://medium.com/swlh/how-to-use-docker-images-containers-and-dockerfiles-39e4e8fc181a
