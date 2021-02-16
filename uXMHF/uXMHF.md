@@ -73,7 +73,6 @@ make uxmhf-image
 (4) Outside the container, copy ~/uberxmhf-6.0.0/uxmhf/_objects/xmhf-x86-vmx-x86pc.bin.gz to the /boot folder of the target machine
 
 
-
 # Setup Testbed (tested with HP EliteBook 2540p)
 
 ## 1. Setup Ubuntu on testbed
@@ -150,7 +149,6 @@ multiboot	${kernel} serial=115200,8n1,0x5080
 module --nounzip (hd0)+1 # should point to where grub is installed
 module --nounzip /boot/i5_i7_DUAL_SINIT_51.BIN
 ```
-
 
 
 # Related Materials
