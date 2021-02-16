@@ -150,6 +150,8 @@ module --nounzip (hd0)+1 # should point to where grub is installed
 module --nounzip /boot/i5_i7_DUAL_SINIT_51.BIN
 ```
 
+One then need to modify /etc/default/grub and set `GRUB_TERMINAL="console"`. Then run `sudo update-grub`. This is because current uberXMHF supports Grub2 in text mode, but not in GUI mode.
+
 
 # Related Materials
 ## Docker commands
