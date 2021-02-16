@@ -77,7 +77,7 @@ make uxmhf-image
 # Setup Testbed (tested with HP EliteBook 2540p)
 
 ## 1. Setup Ubuntu on testbed
-(1) Install Ubuntu 16.04.7 x86 on the testbed
+(1) Enter BIOS, set hard disk mode to be "IDE". Then install Ubuntu 16.04.7 x86 on the testbed
 
 (2) Use a Non-PAE Linux kernel (Linux Kernel 4.4.x and below)
 Method 1 (tested): Download pre-built [images](https://github.com/uberspark/uberxmhf-linux-kernels/raw/master/ubuntu/x86_32/v4.4.x/linux-image-4.4.236-uberxmhf_4.4.236-uberxmhf-3_i386.deb) and [headers](https://github.com/uberspark/uberxmhf-linux-kernels/raw/master/ubuntu/x86_32/v4.4.x/linux-headers-4.4.236-uberxmhf_4.4.236-uberxmhf-3_i386.deb), then install them with 
@@ -143,12 +143,12 @@ timeout		10
 ### For grub v1.9.9
 one can use the tool grub-customizer to modify grub, and add one entry XMHF as follows:
 ```
-set root='(hd0,msdos5)'
+set root='(hd0,5)'
 set kernel='/boot/xmhf-x86-vmx-x86pc.bin.gz'
 echo "Loading ${kernel}..."
 multiboot	${kernel} serial=115200,8n1,0x5080
 module --nounzip (hd0)+1 # should point to where grub is installed
-module /boot/i5_i7_DUAL_SINIT_51.BIN
+module --nounzip /boot/i5_i7_DUAL_SINIT_51.BIN
 ```
 
 
