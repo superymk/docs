@@ -1,0 +1,92 @@
+From fd45f237fd462d7c305b8f24abe273b076e93c55 Mon Sep 17 00:00:00 2001
+From: Jim Newsome <jnewsome@andrew.cmu.edu>
+Date: Sun, 31 Oct 2010 13:52:43 -0400
+Subject: [PATCH 1/2] abort instead of silently truncating user input
+
+---
+ amtterm.c |   32 +++++++++++++++++++++++++++-----
+ 1 files changed, 27 insertions(+), 5 deletions(-)
+
+diff --git a/amtterm.c b/amtterm.c
+index 5f63ee8..2d15949 100644
+--- a/amtterm.c
++++ b/amtterm.c
+@@ -20,6 +20,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdarg.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <errno.h>
+@@ -35,6 +36,23 @@
+ 
+ /* ------------------------------------------------------------------ */
+ 
++static int snprintf_nt(char *str, size_t size, const char *format, ...)
++{
++  int rv;
++  va_list ap;
++
++  va_start(ap, format);
++  rv = vsnprintf(str, size, format, ap);
++  va_end(ap);
++
++  if(rv >= size) {
++    fprintf(stderr, "ABORT: snprintf_nt forced to truncate\n");
++    exit(1);
++  }
++
++  return rv;
++}
++
+ static int recv_tty(void *cb_data, unsigned char *buf, int len)
+ {
+ //    struct redir *r = cb_data;
+@@ -206,7 +224,7 @@ int main(int argc, char *argv[])
+     r.cb_state = state_tty;
+ 
+     if (NULL != (h = getenv("AMT_PASSWORD")))
+-	snprintf(r.pass, sizeof(r.pass), "%s", h);
++	snprintf_nt(r.pass, sizeof(r.pass), "%s", h);
+ 
+     for (;;) {
+         if (-1 == (c = getopt(argc, argv, "hvqu:p:")))
+@@ -219,10 +237,10 @@ int main(int argc, char *argv[])
+ 	    r.verbose = 0;
+ 	    break;
+ 	case 'u':
+-	    snprintf(r.user, sizeof(r.user), "%s", optarg);
++	    snprintf_nt(r.user, sizeof(r.user), "%s", optarg);
+ 	    break;
+ 	case 'p':
+-	    snprintf(r.pass, sizeof(r.pass), "%s", optarg);
++	    snprintf_nt(r.pass, sizeof(r.pass), "%s", optarg);
+ 	    memset(optarg,'*',strlen(optarg)); /* rm passwd from ps list */
+ 	    break;
+ 
+@@ -236,9 +254,9 @@ int main(int argc, char *argv[])
+     }
+ 
+     if (optind < argc)
+-	snprintf(r.host, sizeof(r.host), "%s", argv[optind]);
++	snprintf_nt(r.host, sizeof(r.host), "%s", argv[optind]);
+     if (optind+1 < argc)
+-	snprintf(r.port, sizeof(r.port), "%s", argv[optind+1]);
++	snprintf_nt(r.port, sizeof(r.port), "%s", argv[optind+1]);
+     if (0 == strlen(r.host)) {
+ 	usage(stderr);
+ 	exit(1);
+@@ -250,6 +268,10 @@ int main(int argc, char *argv[])
+ 	fprintf(stderr, "AMT password for host %s: ", r.host);
+ 	fgets(r.pass, sizeof(r.pass), stdin);
+ 	fprintf(stderr, "\n");
++	if(strlen(r.pass)+1 == sizeof(r.pass)) {
++	  fprintf(stderr, "ERROR: input too long\n");
++	  exit(1);
++	}
+ 	if (NULL != (h = strchr(r.pass, '\r')))
+ 	    *h = 0;
+ 	if (NULL != (h = strchr(r.pass, '\n')))
+-- 
+1.7.0.4
