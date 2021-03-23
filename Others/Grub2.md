@@ -2,7 +2,8 @@
 
 ## 1. Pre-requisites
 ```
-sudo apt get install bison flex autoconf libdevmapper-dev
+
+sudo apt install bison flex autoconf libdevmapper-dev
 sudo apt install grub-efi-ia32-bin grub-efi-amd64-bin grub-pc-bin grub2-common grub-efi-ia32
 sudo apt install bison libopts25 libselinux1-dev autogen m4 autoconf help2man libopts25-dev flex libfont-freetype-perl automake autotools-dev libfreetype6-dev texinfo
 sudo apt install autopoint
