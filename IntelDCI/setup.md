@@ -10,7 +10,7 @@ Target PC: Gigabyte Z390 Designare (bios: [mb_bios_z390-designare_f8](IntelDCI/m
 (1) Flash the f8 bios
 
 (2) On the host PC, run [UEFITool](https://codeload.github.com/LongSoft/UEFITool/zip/refs/tags/A58) and open the bios image "Z390DESI.F8". Under the File menu, click Search and search GUID: 899407D7-99FE-43D8-9A21-79EC328CAC21. This is the "Setup" UEFI variable. Right click the section and select "Extract Body", save the section to a new file "section.bin".
-![image](IntelDCI/uefitool.png)
+![image](uefitool.png)
 
 (3) On the host PC, run [IFRExtractor](https://github.com/LongSoft/Universal-IFR-Extractor/releases/download/v0.3.6/IRFExtractor_0.3.6_win.zip), open "section.bin" and export the human readable variable options "section IFR.txt" in the same folder.
 
@@ -39,16 +39,16 @@ Especially, {0A 82} is due to the description "Suppress If {0A 82}" in the file 
 
 ## 2. Run Intel System Debugger on host PC
 (1) Run "Intel System Debugger Target Indicator 2021 NDA U2110", check if the connection is good. A good connection looks like this:
-![image](IntelDCI/indicator.png)
+![image](indicator.png)
 
 (2) Run Intel System Debugger. First click the "New Connection" dropbox 
-![image](IntelDCI/newconn.png)
+![image](newconn.png)
 
 Then select "Connect and detect target". Use default settings and then click "Finish"
-![image](IntelDCI/connfin.png)
+![image](connfin.png)
 
 Now the connection panel shows this:
-![image](IntelDCI/status.png)
+![image](status.png)
 
 Example shell output is:
 
@@ -124,7 +124,7 @@ Arguments: []
 In [1]: 
 ```
 
-And see ![image](IntelDCI/shell.png)
+And see ![image](shell.png)
 
 
 (3) Then create a new debug configuration, see the [link](https://software.intel.com/content/www/us/en/develop/documentation/system-debug-user-guide/top/intel-system-debugger-startup/launching-the-debugger.html)
