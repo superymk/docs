@@ -2,7 +2,7 @@
 ## 1. Hardware requirements:
 Host PC: Win10 x64, USB 3.0 ports, Intel System Debugger NDA U2110.
 
-Target PC: Gigabyte Z390 Designare (bios: [mb_bios_z390-designare_f8](IntelDCI/mb_bios_z390-designare_f8.zip)), i9 9900K, USB 3.0 ports (I did not try USB 3.1 and so on)
+Target PC: Gigabyte Z390 Designare (bios: [mb_bios_z390-designare_f8](mb_bios_z390-designare_f8.zip)), i9 9900K, USB 3.0 ports (I did not try USB 3.1 and so on)
 
 [USB 3.0 debug cable](https://www.datapro.net/products/usb-3-0-super-speed-a-a-debugging-cable.html)
 
