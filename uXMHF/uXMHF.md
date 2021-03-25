@@ -41,7 +41,7 @@ sudo usermod -aG docker $USER
 (3) Reboot so that you can run Docker without sudo.
 
 ## 2. Build Docker image of uberSpark v6.0.0
-(1) Download the [Docker File](uXMHF/Dockerfile) under the home folder ~/.
+(1) Download the [Docker File](Dockerfile) under the home folder ~/.
 
 (2) Build the Docker image
 
