@@ -7,7 +7,7 @@ Target PC: Gigabyte Z390 Designare (bios: [mb_bios_z390-designare_f8](mb_bios_z3
 [USB 3.0 debug cable](https://www.datapro.net/products/usb-3-0-super-speed-a-a-debugging-cable.html)
 
 ## 2. Prepare the target PC
-(1) Flash the f8 bios
+(1) Flash the f8 bios, set "xHCI Hand-off" to be "Enabled"
 
 (2) On the host PC, run [UEFITool](https://codeload.github.com/LongSoft/UEFITool/zip/refs/tags/A58) and open the bios image "Z390DESI.F8". Under the File menu, click Search and search GUID: 899407D7-99FE-43D8-9A21-79EC328CAC21. This is the "Setup" UEFI variable. Right click the section and select "Extract Body", save the section to a new file "section.bin".
 ![image](uefitool.png)
