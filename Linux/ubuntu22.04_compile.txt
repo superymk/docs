@@ -1,0 +1,32 @@
+See https://askubuntu.com/questions/1435591/correct-way-to-build-kernel-with-hardware-support-fix-patches-ubuntu-22-04-lts
+
+Modifications for Step 3:
+===============================
+# get the current kernel source downloaded and extracted (ignore the end user warning)
+sudo apt source linux-image-unsigned-$(uname -r)
+
+cd /path/to/linux-<version>/
+
+# Give all user execution permissions to scripts (Important, otherwise error will be thrown even if you are running them as root)
+chmod a+x debian/scripts/*
+chmod a+x -R ./scripts
+
+
+
+Modifications for Step 7:
+===============================
+1. Use "sudo dpkg" instead of "dpkg"
+2. Use "sudo dpkg -i linux-*-6.2.16-custom_6.2.16-custom-NUM*.deb" (replace NUM with the actual number generated in Step 6). Otherwise, dpkg may refuse to install the newest kernel build.
+
+
+
+Notes
+===============================
+Q: How to solve the error "dpkg-source: error: unrepresentable changes to source"
+A: Run command "make -j `getconf _NPROCESSORS_ONLN` bindeb-pkg LOCALVERSION=-custom" instead of "make -j `getconf _NPROCESSORS_ONLN` deb-pkg LOCALVERSION=-custom", see https://unix.stackexchange.com/questions/603365/building-a-custom-kernel-in-debian
+
+Q: How to do incremental build
+A: Run command "make -j `getconf _NPROCESSORS_ONLN` bindeb-pkg LOCALVERSION=-custom", see https://askubuntu.com/questions/1416630/building-linux-kernel-incremental
+
+Q: Improve build performance by not generating "*-custom-dbg-*" deb
+A: "I edited scripts/package/builddeb and at the very end of the file is where it checks for DEBUG_INFO and builds the dbg package. I just commented out that whole block. So I still have debugging but the package build goes a whole lot faster.", see https://superuser.com/questions/925079/compile-linux-kernel-deb-pkg-target-without-generating-dbg-package

@@ -1,0 +1,6 @@
+See https://stackoverflow.com/questions/31054437/how-to-install-wireshark-on-linux-and-capture-usb-traffic
+
+Notes:
+===============================
+1. Add the current to sudoers to solve some permission issues
+2. Run "sudo setcap CAP_DAC_OVERRIDE+eip /usr/bin/dumpcap" to fix further permission issues
